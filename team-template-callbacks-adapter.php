@@ -164,7 +164,7 @@ class #tehme#_Team_Members_Template_Callbacks {
 add_filter( 'cherry_team_data_callbacks', '#tehme#_team_data_callbacks', 10, 2 );
 function #tehme#_team_data_callbacks( $data, $atts=array() ){
 
-	if( ! ( $callbacks = &cherry_team_members_templater()->callbacks ) ){
+	if( !( is_array( $data['name'] ) && ( $callbacks = &$data['name'][0] ) ) ){
 		return $data;
 	}
 
