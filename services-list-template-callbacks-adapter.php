@@ -3,15 +3,15 @@
 /**
  * Add custom meta tag 'cherry-services-alternate-url'
  */
-add_filter( 'cherry_services_list_meta_options_args', 'carrepair_services_list_meta_options_args' );
-function carrepair_services_list_meta_options_args( $args ){
+add_filter( 'cherry_services_list_meta_options_args', '#theme#_services_list_meta_options_args' );
+function #theme#_services_list_meta_options_args( $args ){
 
 	$args['fields']['cherry-services-alternate-url'] = array(
 		'type'        => 'text',
 		'element'     => 'control',
 		'parent'      => 'general',
-		'placeholder' => esc_html__( 'URL', 'carrepair' ),
-		'label'       => esc_html__( 'Alternate URL', 'carrepair' ),
+		'placeholder' => esc_html__( 'URL', '#theme#' ),
+		'label'       => esc_html__( 'Alternate URL', '#theme#' ),
 	);
 
 	return $args;
@@ -20,7 +20,7 @@ function carrepair_services_list_meta_options_args( $args ){
 /**
  * A Adapter class for macross collbacks override
  */
-class Carrepair_Services_List_Template_Callbacks_Adapter {
+class #Theme#_Services_List_Template_Callbacks_Adapter {
 	/**
 	 * Shortcode attributes array
 	 * @var array
@@ -172,14 +172,14 @@ class Carrepair_Services_List_Template_Callbacks_Adapter {
 /**
  * Overwrite macross services callbacs
  */
-add_filter( 'cherry_services_data_callbacks', 'carrepair_services_data_callbacks', 10, 2 );
-function carrepair_services_data_callbacks( $data, $atts=array() ){
+add_filter( 'cherry_services_data_callbacks', '#theme#_services_data_callbacks', 10, 2 );
+function #theme#_services_data_callbacks( $data, $atts=array() ){
 
 	if( ! ( $callbacks = &cherry_services_templater()->callbacks ) ){
 		return $data;
 	}
 
-	$handler = new Carrepair_Services_List_Template_Callbacks_Adapter( $callbacks );
+	$handler = new #Theme#_Services_List_Template_Callbacks_Adapter( $callbacks );
 
 	$data['title']  = array( $handler, 'get_title' );
 	$data['image']  = array( $handler, 'get_image' );
